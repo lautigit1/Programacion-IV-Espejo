@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+
+# Entorno
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Alembic (opcional: descomentar si no versionás migraciones)
+# alembic/versions/*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
