@@ -1,0 +1,101 @@
+### TP3 — Productos API
+### Base URL: http://localhost:8000
+### Requiere que el servidor FastAPI esté corriendo
+
+# ──────────────────────────────────────────────
+# 1. Listar todos los productos
+# ──────────────────────────────────────────────
+GET http://localhost:8000/productos/
+Accept: application/json
+
+###
+
+# ──────────────────────────────────────────────
+# 2. Crear un producto
+# ──────────────────────────────────────────────
+POST http://localhost:8000/productos/
+Content-Type: application/json
+
+{
+  "nombre": "Notebook Lenovo IdeaPad",
+  "descripcion": "Laptop 15.6 pulgadas, Intel Core i5, 8GB RAM, 512GB SSD",
+  "precio_base": 749.99,
+  "imagen_url": [
+    "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400",
+    "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400"
+  ],
+  "disponible": true
+}
+
+###
+
+# ──────────────────────────────────────────────
+# 3. Crear otro producto
+# ──────────────────────────────────────────────
+POST http://localhost:8000/productos/
+Content-Type: application/json
+
+{
+  "nombre": "Mouse Logitech MX Master 3",
+  "descripcion": "Mouse inalámbrico ergonómico de alta precisión",
+  "precio_base": 89.99,
+  "imagen_url": [
+    "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400"
+  ],
+  "disponible": true
+}
+
+###
+
+# ──────────────────────────────────────────────
+# 4. Editar un producto (reemplazar id=1)
+# ──────────────────────────────────────────────
+PUT http://localhost:8000/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "Notebook Lenovo IdeaPad 5 — ACTUALIZADO",
+  "descripcion": "Laptop 15.6 pulgadas, Intel Core i7, 16GB RAM, 1TB SSD",
+  "precio_base": 999.99,
+  "imagen_url": [
+    "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"
+  ],
+  "disponible": true
+}
+
+###
+
+# ──────────────────────────────────────────────
+# 5. Eliminar un producto (reemplazar id=2)
+# ──────────────────────────────────────────────
+DELETE http://localhost:8000/productos/2
+Accept: application/json
+
+###
+
+# ──────────────────────────────────────────────
+# 6. Asociar producto a categoría (Producto-Categoría)
+# ──────────────────────────────────────────────
+POST http://localhost:8000/productos/categorias
+Content-Type: application/json
+
+{
+  "producto_id": 1,
+  "categoria_id": 1
+}
+
+###
+
+# ──────────────────────────────────────────────
+# 7. Listar relaciones Producto-Categoría
+# ──────────────────────────────────────────────
+GET http://localhost:8000/productos/categorias
+Accept: application/json
+
+###
+
+# ──────────────────────────────────────────────
+# 8. Producto inexistente — esperar 404
+# ──────────────────────────────────────────────
+GET http://localhost:8000/productos/999
+Accept: application/json
