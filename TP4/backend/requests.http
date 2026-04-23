@@ -1,0 +1,75 @@
+### TP4 — Pruebas de Productos
+### Base URL: http://localhost:8000
+
+@baseUrl = http://localhost:8000
+
+# ─────────────────────────────────────────────
+# CATEGORÍAS (dependencia para vincular)
+# ─────────────────────────────────────────────
+
+### Crear categoría de prueba
+POST {{baseUrl}}/categorias/
+Content-Type: application/json
+
+{
+  "nombre": "Electrónica",
+  "descripcion": "Dispositivos y gadgets electrónicos"
+}
+
+### Listar categorías
+GET {{baseUrl}}/categorias/
+
+# ─────────────────────────────────────────────
+# PRODUCTOS — CRUD
+# ─────────────────────────────────────────────
+
+### Crear producto
+POST {{baseUrl}}/productos/
+Content-Type: application/json
+
+{
+  "nombre": "Laptop Pro",
+  "descripcion": "Laptop de alto rendimiento",
+  "precio_base": 1500.00,
+  "imagen_url": ["https://example.com/img1.jpg"],
+  "disponible": true
+}
+
+### Listar todos los productos
+GET {{baseUrl}}/productos/
+
+### Obtener producto por id
+GET {{baseUrl}}/productos/1
+
+### Actualizar producto
+PUT {{baseUrl}}/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "Laptop Pro V2",
+  "descripcion": "Laptop actualizada con más RAM",
+  "precio_base": 1800.00,
+  "imagen_url": ["https://example.com/img2.jpg"],
+  "disponible": true
+}
+
+### Eliminar producto
+DELETE {{baseUrl}}/productos/1
+
+# ─────────────────────────────────────────────
+# PRODUCTO-CATEGORÍA — Relaciones
+# ─────────────────────────────────────────────
+
+### Vincular categoría 1 al producto 1
+POST {{baseUrl}}/productos/1/categorias
+Content-Type: application/json
+
+{
+  "categoria_id": 1
+}
+
+### Listar categorías del producto 1
+GET {{baseUrl}}/productos/1/categorias
+
+### Desvincular categoría 1 del producto 1
+DELETE {{baseUrl}}/productos/1/categorias/1
